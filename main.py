@@ -17,7 +17,7 @@ class better_float:
             # rez - rezult
             # dot - index with dot 
             
-            rez = float(str(pre_rez)[:-space_count] + '.' + str(pre_rez)[-space_count:])
+            rez = str(pre_rez)[:-space_count] + '.' + str(pre_rez)[-space_count:]
         else:
             pre_rez = without_dot**degree
             space_count = after_dot * degree
@@ -28,9 +28,9 @@ class better_float:
             
             else:
                 dop_zero = '-' + '0'*space_count + str(pre_rez)[1:]
-                rez = float(str(dop_zero)[:-space_count] + '.' + str(dop_zero)[-space_count:])
+                rez = str(dop_zero)[:-space_count] + '.' + str(dop_zero)[-space_count:]
         
-        return rez
+        return float(rez)
 
 
     # float summation function
@@ -62,10 +62,10 @@ class better_float:
         for num, dot in list_of_rezs:
             output += int(str(num) + '0'*(max_dot - dot))
 
-        rez = str(output)[:-max_dot] + '.' + str(output)[-max_dot:]
+        rez = '0'*max_dot + str(output)[:-max_dot] + '.' + ('0'*max_dot + str(output))[-max_dot:]
 
-        return rez
+        return float(rez)
 
 
-print(better_float.sumF(2543.435,652.3492,2345.895467,76.456,4325.6754))
-print(sum([2543.435,652.3492,2345.895467,76.456,4325.6754]))
+print(better_float.sumF(348735.01934894, 3897983475.02235655, 0.00089474373))
+print(sum([348735.01934894, 3897983475.02235655, 0.00089474373]))
