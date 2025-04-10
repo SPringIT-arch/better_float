@@ -62,10 +62,13 @@ class better_float:
         for num, dot in list_of_rezs:
             output += int(str(num) + '0'*(max_dot - dot))
 
-        rez = '0'*max_dot + str(output)[:-max_dot] + '.' + ('0'*max_dot + str(output))[-max_dot:]
+        if output > 0:
+            rez = '0'*max_dot + str(output)[:-max_dot] + '.' + ('0'*max_dot + str(output))[-max_dot:]
+        else:
+            rez = '-' + '0'*max_dot + str(abs(output))[:-max_dot] + '.' + ('0'*max_dot + str(abs(output)))[-max_dot:]
 
         return float(rez)
 
 
-print(better_float.sumF(348735.01934894, 3897983475.02235655, 0.00089474373))
-print(sum([348735.01934894, 3897983475.02235655, 0.00089474373]))
+print(better_float.sumF(0.1, -0.2))
+print(sum([0.1, -0.2]))
