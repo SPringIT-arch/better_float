@@ -38,6 +38,7 @@ class better_float:
         
         list_of_rezs = []
         output = 0
+        max_dot = 0
 
         for float_num in float_nums:
             string = str(float_num)
@@ -46,16 +47,25 @@ class better_float:
             before_dot = int(string[:dot_index])
             without_dot = int(string.replace('.',''))
 
-            max_dot = 0
 
             if after_dot > max_dot: max_dot = after_dot
+
+        for float_num in float_nums:
+            string = str(float_num)
+            dot_index = string.find('.')
+            after_dot = len(string[dot_index + 1:])
+            before_dot = int(string[:dot_index])
+            without_dot = int(string.replace('.',''))
 
             list_of_rezs.append((without_dot, after_dot))
 
         for num, dot in list_of_rezs:
-            output += int(num + '0'*(max_dot - dot))
+            output += int(str(num) + '0'*(max_dot - dot))
 
         rez = str(output)[:-max_dot] + '.' + str(output)[-max_dot:]
 
         return rez
 
+
+print(better_float.sumF(2543.435,652.3492,2345.895467,76.456,4325.6754))
+print(sum([2543.435,652.3492,2345.895467,76.456,4325.6754]))
